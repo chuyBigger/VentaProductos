@@ -10,6 +10,7 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         Boolean finalizar = false; // Variable de control para terminar el ciclo
         ArrayList<Producto> listaDeProductos = new ArrayList<>();
+        ArrayList<Producto> comprasRealizadas = new ArrayList<>();
 
         // Crear productos iniciales
         Producto producto1 = new Producto("Zapato", 1350.50);
@@ -109,6 +110,7 @@ public class Principal {
                                                 ---------------------------------------------------
                                                 """);
                                         totalCompras += cobro; // Actualizar total de compras
+                                        comprasRealizadas.add(prod);
                                         productoEncontrado = true;
                                     } else {
                                         System.out.println("No tienes suficiente crédito para realizar la compra.");
@@ -153,7 +155,15 @@ public class Principal {
                 }
                 case 5: {
                     // Mostrar el total de las compras realizadas
-                    System.out.println("El total de gasto de hoy es: " + totalCompras);
+
+                    System.out.println("Total de las compras realizadas:");
+                    System.out.println("**********************************");
+                    Collections.sort(comprasRealizadas);
+                    for (int i = 0; i < comprasRealizadas.size(); i++) {
+                        System.out.println(comprasRealizadas.get(i)); // Mostrar nombre y precio de cada producto
+                    }
+                    System.out.println("\nEl total de gasto de hoy es: \n$ " + totalCompras);
+                    System.out.println("\nCredito diponible: \n$ "+ credito);
                     break;
                 }
                 case 6: {
